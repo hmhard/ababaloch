@@ -1,4 +1,5 @@
 ##  Amharic sayings
 
-![Image](public/image.png)
+
+![Header](public/image.PNG?raw=true "Clock")
 
