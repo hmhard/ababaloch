@@ -43,7 +43,7 @@ export const App = () => {
               <Text>አማርኛ አባባሎች</Text>
             </CardHeader>
             <CardBody padding={100} backgroundPosition={'center'} backgroundSize={'cover'} backgroundImage={background}>
-              <Text fontSize={'34px'} fontWeight={'700'}>{ababaloch[index]}</Text>
+              <Text fontSize={'34px'} textColor={theme.colors.white} fontWeight={'700'}>{ababaloch[index]}</Text>
              
             </CardBody>
              <CardFooter justifyContent={'center'}>
