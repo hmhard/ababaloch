@@ -8,31 +8,53 @@ import {
   Code,
   Grid,
   theme,
+  Card,
+  CardBody,
+  CardHeader,
+  Button,
+  Stack,
+  CardFooter,
 } from "@chakra-ui/react"
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import { data } from "./data/ababaloch"
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
+export const App = () => {
+  const [ababaloch] = React.useState(data);
+  const [index, setIndex] = React.useState(0);
+  const length = ababaloch.length;
+  const getRandom = () => {
+
+    setIndex(Math.round(Math.random() * (length - 1) + 1));
+    console.log(index);
+  }
+  return <ChakraProvider  theme={theme}>
     <Box textAlign="center" fontSize="xl">
       <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
+        <ColorModeSwitcher  justifySelf="flex-end" />
         <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
+          <Card>
+            <CardHeader>
+              <Text>አማርኛ አባባሎች</Text>
+            </CardHeader>
+            <CardBody>
+              <Text>{ababaloch[index]}</Text>
+             
+            </CardBody>
+             <CardFooter justifyContent={'center'}>
+              <Stack direction='row' spacing={4} top={5}  className="mt-5">
+                <Button  colorScheme='teal' variant='outline' onClick={()=>(setIndex((index)=>index-1))}>
+                  Previous
+                </Button><Button  colorScheme='teal' variant='outline' onClick={()=>(setIndex((index)=>index+1))}>
+                  Next
+                </Button>
+                <Button  colorScheme='teal' variant='outline' onClick={getRandom}>
+                  Random
+                </Button>
+              </Stack>
+              </CardFooter>
+          </Card>
         </VStack>
       </Grid>
     </Box>
   </ChakraProvider>
-)
+}
